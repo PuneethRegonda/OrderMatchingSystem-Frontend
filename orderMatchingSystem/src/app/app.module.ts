@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ChartModule } from 'angular2-chartjs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import {HttpClientModule } from '@angular/common/http';
 import { DashboardCardComponent } from './dashboard/dashboard-card/dashboard-card.component';
 import { TradehistoryComponent } from './tradehistory/tradehistory.component';
 import { OrdercComponent } from './orderc/orderc.component';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +32,16 @@ import { OrdercComponent } from './orderc/orderc.component';
     ErrorPageComponentComponent,
     DashboardCardComponent,
     TradehistoryComponent,
-    OrdercComponent
+    OrdercComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

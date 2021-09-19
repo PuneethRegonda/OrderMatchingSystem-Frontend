@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChartComponent } from './chart/chart.component';
 import { ClientsComponent } from './clients/clients.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ErrorPageComponentComponent } from './error-page-component/error-page-component.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'portfolio', component: PortfolioComponent,canActivate: [AuthGaurd]},
   {path: 'dashboard',component: DashboardComponent, canActivate: [AuthGaurd]},
   {path: 'orderplacing', component: OrdercComponent, canActivate: [AuthGaurd]},
+  {path: 'chart', component: ChartComponent},
   {path: 'not-found', component: ErrorPageComponentComponent, data: {'message': 'Page Not Found'}},
   {path: '**', redirectTo: 'not-found'}
 ];
