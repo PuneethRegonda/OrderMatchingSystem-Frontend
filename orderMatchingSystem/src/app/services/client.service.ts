@@ -13,7 +13,6 @@ export class ClientService {
 
   getAllClients(custodianid: string) {
 
-    console.log(custodianid)
     return this.http.get<Result>(`${url}/client/all/${custodianid}`,{headers: headers})
 
   }

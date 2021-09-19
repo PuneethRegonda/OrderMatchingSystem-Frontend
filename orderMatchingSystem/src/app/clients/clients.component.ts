@@ -5,6 +5,7 @@ import { CustodianService } from '../services/custodian.service';
 import { Custodian } from '../models/Custodian';
 import { ClientService } from '../services/client.service';
 import { Client } from '../models/Client';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clients',
@@ -17,7 +18,8 @@ export class ClientsComponent implements OnInit {
   custodianDetails?: Custodian
 
   constructor(private custodianservice: CustodianService,
-    private clientservice: ClientService) { }
+    private clientservice: ClientService,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -35,6 +37,7 @@ export class ClientsComponent implements OnInit {
                title: 'Oops',
                text: 'Invalid Username or Password'
              })
+             this.router.navigate(['/login'])
          }
 
 
@@ -50,8 +53,6 @@ export class ClientsComponent implements OnInit {
 
          this.cardDetails = result.data as [Client]
 
-         console.log(this.cardDetails)
-
     },(error)=>{
 
       if(error.status = 403){
@@ -60,6 +61,7 @@ export class ClientsComponent implements OnInit {
           title: 'Oops',
           text: 'Invalid Username or Password'
         })
+        this.router.navigate(['/login'])
     }
 
     })
