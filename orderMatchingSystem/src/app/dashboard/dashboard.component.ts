@@ -8,6 +8,8 @@ import { Result } from '../models/Result';
 import { TradeHistory } from '../models/TradeHistory';
 import { CustodianService } from '../services/custodian.service';
 import { DashboardService } from '../services/dashboard.service';
+import  {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-dashboard',
@@ -118,6 +120,26 @@ export class DashboardComponent implements OnInit {
       }
 
     })
+
+  }
+
+  saveaspdf() {
+
+    var element = <HTMLElement>document.getElementById("tradehistorytable")
+
+    html2canvas(element).then((canvas)=>{
+
+      var imgdata = canvas.toDataURL('image/png')
+      var doc = new jsPDF();
+      var imgheight = canvas.height * 208 / canvas.width
+
+      doc.addImage(imgdata,0,0,208,imgheight)
+      doc.save('data.pdf')
+
+
+    })
+
+
 
   }
 

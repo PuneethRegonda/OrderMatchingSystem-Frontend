@@ -1,1 +1,87 @@
-<p>portfolio works!</p>
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="card mt-4" style="border-radius: 10px;">
+                    <div class="card-body">
+                        <div class="parent-container d-flex">
+                            <div class="container">
+                                <div class="row">
+                                    <img class="rounded float-start"
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaBO3PQB2Aza-xNuCspCSD-7envplmE5gkbg&usqp=CAU"
+                                        style="width: auto; height: 100px;">
+                                    <div class="col mt-4">
+                                        <h3 class="fs-5 fw-bolder">{{clientDetails?.clientname}}</h3>
+                                        <h3 class="fs-6 fw-normal mt-2"> Clientid: {{clientDetails?.clientid}}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="fs-6  fw-bolder text-end mt-5">Transaction Limit:
+                                            {{clientDetails?.transactionlimit|currency:'INR'}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-end mt-4 mb-2 p-2">
+                    <button type="button" class="col-md-1 btn btn-primary m-2 p-1 " [routerLink]="['/orderplacing']"
+                        [queryParams]="{'clientid': clientid}">Create Order</button>
+                    <button type="button" (click)="saveaspdf()" class="col-md-1 btn btn-secondary m-2 p-1">Generate
+                        report</button>
+                </div>
+                <div id="buyselllist">
+                    <h4>Total Buy Sell Instruments of Client</h4><br>
+                    <div class="card col-md-12" style="border-radius: 10px;" >
+                        <div class="table-responsive">
+                            <table class="table table-hover " fgid="6030" style="margin-right: 500px; ">
+                                <thead fgid="6036">
+                                    <tr fgid="6042">
+                                        <th scope="col" fgid="6048">Instrument Id</th>
+                                        <th scope="col" fgid="6062">Direction</th>
+                                        <th scope="col" fgid="6055">Item Name</th>
+                                        <th scope="col" fgid="6062">Price</th>
+                                        <th scope="col" fgid="6069">Quantity</th>
+                                        <th scope="col" fgid="6069">Status</th>
+                                        <th scope="col" fgid="6069">Expirydate</th>
+                                    </tr>
+                                </thead>
+                                <tbody fgid="6076">
+                                    <tr *ngFor="let i of sellDetails">
+                                        <td fgid="6095">{{i.instrumentid.instrumentid}}</td>
+                                        <td>Sell Instrument</td>
+                                        <td fgid="6102">{{i.instrumentid.instrumentname}}</td>
+                                        <td fgid="6109">{{i.instrumentid.facevalue}}</td>
+                                        <td fgid="6109">{{i.instrumentid. minquanity}}</td>
+                                        <td fgid="6109">
+                                            <p *ngIf="i.isactive">Partial Trade</p>
+                                            <p *ngIf="!i.isactive">Trade Success</p>
+
+                                        </td>
+                                        <td fgid="6109">{{i.instrumentid.expiry}}</td>
+                                    </tr>
+                                    <tr *ngFor="let i of buyDetails">
+                                        <td fgid="6095">{{i.instrumentid.instrumentid}}</td>
+                                        <td>Buy Instrument</td>
+                                        <td fgid="6102">{{i.instrumentid.instrumentname}}</td>
+                                        <td fgid="6109">{{i.instrumentid.facevalue}}</td>
+                                        <td fgid="6109">{{i.instrumentid. minquanity}}</td>
+                                        <td fgid="6109">
+                                            <p *ngIf="i.isactive">Partial Trade</p>
+                                            <p *ngIf="!i.isactive">Trade Success</p>
+                                        </td>
+                                        <td fgid="6109">{{i.instrumentid.expiry}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

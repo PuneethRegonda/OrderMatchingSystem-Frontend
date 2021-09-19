@@ -5,6 +5,7 @@ import { LoginService } from '../services/login.service';
 import { AuthenticationRequest } from '../models/AuthenticationRequest';
 import { Result } from '../models/Result';
 import Swal from 'sweetalert2'
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,8 @@ export class LoginComponent implements OnInit {
 
   Authdata?: AuthenticationRequest
   loginForm:FormGroup; 
+  auth: boolean = false;
+
   constructor(private loginservice: LoginService,
     private router: Router) {
     this.loginForm =new FormGroup({
@@ -34,10 +37,11 @@ export class LoginComponent implements OnInit {
     });
   
   }
-
- 
-
   ngOnInit(): void {
+
+   
+      
+
   }
 
   
@@ -61,7 +65,8 @@ export class LoginComponent implements OnInit {
 
     this.loginservice.checkAuth(this.Authdata).subscribe((result: Result)=>{
 
-      sessionStorage.setItem('token',result.data.toString() )
+      // sessionStorage.setItem('token',result.data.toString() )
+      this.loginservice.setItem('token',result.data.toString())
 
       this.router.navigate(['dashboard'])
 

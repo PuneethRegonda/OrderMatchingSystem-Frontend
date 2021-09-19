@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { AuthenticationRequest } from '../models/AuthenticationRequest';
 import { Result } from '../models/Result';
 import {url} from '../utils/constants'
@@ -26,6 +27,19 @@ export class LoginService {
     let user = sessionStorage.getItem('token')
     return user!==null
 
+  }
+
+  private storageSub = new Subject<string>();
+  watchStorage(): Observable<any> {
+    return this.storageSub.asObservable();
+  }
+  setItem(key: string, data: any) {
+    localStorage.setItem(key, data);
+    this.storageSub.next('changed');
+  }
+  removeItem(key: any) {
+    localStorage.removeItem(key);
+    this.storageSub.next('changed');
   }
    
 }

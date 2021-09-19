@@ -8,6 +8,8 @@ import { Result } from '../models/Result';
 import { Sell } from '../models/Sell';
 import { CustodianService } from '../services/custodian.service';
 import { PortfolioService } from '../services/portfolio.service';
+import  {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-portfolio',
@@ -15,6 +17,7 @@ import { PortfolioService } from '../services/portfolio.service';
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit {
+
 
   custodianDetails?: Custodian
   clientid?: string
@@ -48,8 +51,11 @@ export class PortfolioComponent implements OnInit {
 
 
       }
+      
     )
 
+   
+         
 
   }
 
@@ -101,6 +107,24 @@ export class PortfolioComponent implements OnInit {
      })
 
   }
+
+  saveaspdf() {
+
+    var element = <HTMLElement>document.getElementById("buyselllist")
+
+    html2canvas(element).then((canvas)=>{
+
+      var imgdata = canvas.toDataURL('image/png')
+      var doc = new jsPDF();
+      var imgheight = canvas.height * 208 / canvas.width
+
+      doc.addImage(imgdata,0,0,208,imgheight)
+      doc.save('data.pdf')
+
+
+    })
+  }
+
 
 
 

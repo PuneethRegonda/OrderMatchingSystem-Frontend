@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -8,15 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   navitems?: Array<any>
-  companyDetails:any;
+  companyDetails: any;
+  auth: boolean = false
 
-  constructor() { 
 
-    this.navitems=[
-      {
-        link: "login",
-        text: "LOGIN"
-      },
+  constructor(private loginservice: LoginService) {
+
+    this.navitems = [
       {
         link: "dashboard",
         text: "Dashboard"
@@ -35,17 +35,37 @@ export class HeaderComponent implements OnInit {
       }
     ]
 
-    this.companyDetails={
-      name:'HDFC',
-      logo:"https://hdfcbankcareers.hirealchemy.com/img/HDFC-Bank-Logo.a05df558.jpg"
-  }
+    this.companyDetails = {
+      name: 'HDFC',
+      logo: "https://hdfcbankcareers.hirealchemy.com/img/HDFC-Bank-Logo.a05df558.jpg"
+    }
+
+
 
   }
+
+  
 
   ngOnInit(): void {
 
+    if (sessionStorage.getItem('token'))
+      this.auth = true;
+    else
+      this.auth = false
 
+    this.loginservice.watchStorage().subscribe((data: string) => {
+
+      if (data == 'changed') {
+        this.auth = false;
+      }
+
+
+    })
 
   }
+
+   onlogout(){
+     this.loginservice.removeItem('token')
+   }
 
 }

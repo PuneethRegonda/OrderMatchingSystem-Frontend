@@ -8,7 +8,18 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <div class="nav-item" fgid="19014">
                 <a class="nav-link" href="#" fgid="19020">
+
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link"
+                            *ngIf="!auth" routerLink= "/login" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact:true}"
+                            >Login</a>
+                            <a class="nav-link"
+                            *ngIf="auth" routerLink= "/login" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact:true}" (click)="onlogout()"
+                            >Logout</a>
+                        </li>
                         <app-navitems *ngFor="let item of navitems"
                          [navitems]="item"></app-navitems>
                     </ul>

@@ -16,7 +16,7 @@
                 </div>
                 <h5 class="mb-4 mt-4"> Last Trade</h5>
                 <div class="col-sm-12 col-xl-6 mt-4">
-                    <div class="card" style="border-radius: 4%;">
+                    <div class="card" style="border-radius: 10px;">
                         <div class="card-body p-2">
                             <div class="table-responsive ">
                                 <table class="table table-sm table-borderless">
@@ -72,5 +72,11 @@
                         </div>
                     </div>
                 </div>
-
-<app-tradehistory></app-tradehistory>
+<br>
+                <div class="row justify-content-end">
+                    <button class="btn btn-primary col-md-1 mr-3" (click)="saveaspdf()">Print</button>
+                </div>
+<div id="tradehistorytable">
+    <h4>Trade History</h4>
+    <app-tradehistory></app-tradehistory>
+</div>
