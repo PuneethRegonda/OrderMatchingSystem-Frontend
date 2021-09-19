@@ -1,0 +1,138 @@
+<!-- <div class="login">
+    <div class="login-background">
+        <div class="login-logo"> </div>
+        <div class="top-left">
+            <h1>STOCKS &<br>ORDER MATCHING</h1>
+        </div>
+        <div class="Box">
+            <h3> LOGIN </h3>
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="form-group inputBox">
+                    <input 
+                    formControlName="custodianid" 
+                    id="custodianid" 
+                    name="custodianid"
+                    autocomplete="off"
+                     required type="text"
+                        class="form-control">
+                    <label>CustodianID</label>
+                    <div *ngIf="!f.custodianid.valid && f.custodianid.dirty" class="text-danger mt-4">
+                        <div *ngIf="f.custodianid.errors?.required">CustodianID is
+                            required</div>
+                        <div *ngIf="f.custodianid.errors?.pattern">Only Alphanumerics are allowed</div>
+
+                        <div *ngIf="f.custodianid.errors?.minlength">Minimum 5 characters needed</div>
+                        <div *ngIf="f.custodianid.errors?.maxlength">Maximum 10 characters needed</div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group inputBox">
+                    <input type="password"
+                     name="password"
+                    class="form-control" 
+                     required
+                    formControlName="password">
+                    <label>Password</label>
+                    <div *ngIf="!f.password.valid && f.password.dirty" class="text-danger mt-4">
+                        <div *ngIf="f.password.errors?.required">Password is required
+                        </div>
+                        <div *ngIf="f.password.errors?.minlength">Password should be 6
+                            character</div>
+                        <div *ngIf="f.password.errors?.maxlength">Password should have maximum 55
+                            character</div>
+                    </div>
+                </div>
+
+               
+                <button type="submit" 
+                class="btn btn-success" 
+                name="submit" value="Login">Login</button>
+
+            </form>
+        </div>
+    </div> -->
+
+
+
+
+    <div class=" align-items-center py-4 bg-gray-100 vh-100">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-xl-5 ms-xl-auto px-lg-4 text-center text-primary">
+                    <img class="img-fluid mb-4" width="300"
+                        src="https://therichpost.com/wp-content/uploads/2021/06/login_page_image.png" alt=""
+                        style="transform: rotate(10deg)">
+                    <h1 class="mb-4"> Order Matching System </h1>
+    
+     
+    
+                    <!-- <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore.</p> -->
+                </div>
+                <div class="col-lg-6 px-lg-5">
+                    <div class="card col-lg-10">
+                        <div class="card-body mt-4 p-lg-5">
+    
+     
+    
+                            <h3 class="mb-4">Hi, welcome back! </h3>
+                            <!-- <p class="text-muted text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                                do eiusmod tempor incididunt ut labore.</p> -->
+                            <form [formGroup]="loginForm" (ngSubmit)="handleLogin()" novalidate>
+    
+     
+    
+                                <div class="form-group" fgid="6517">
+                                    <label for="exampleInputEmail1" class="form-label mt-4" fgid="6523">Email
+                                        address</label>
+                                    <input type="email" class="form-control" id="custodianid" name="custodianid"
+                                        aria-describedby="emailHelp" placeholder="Enter Custodian Id"
+                                        formControlName="custodianid" autocomplete="off" fgid="6531">
+                                    <div *ngIf="!custodianid?.valid && custodianid?.dirty " class="text-danger text-sm mt-2">
+                                        <div *ngIf="custodianid.errors?.maxlength">Custodian Id cannot be more than 255
+                                            characters</div>
+                                        <div *ngIf="custodianid.errors?.minlength">Minimum characters for custodianid is 5
+                                        </div>
+                                        <div *ngIf="custodianid.errors?.required">Custodian Id is required</div>
+                                        <div *ngIf="custodianid.errors?.pattern">Custodian Id should be alphanumeric only
+                                        </div>
+                                    </div>
+                                    <!-- <small id="emailHelp" class="form-text text-muted" fgid="6540">We'll never share your email with anyone else.</small> -->
+                                </div>
+    
+     
+    
+                                <div class="form-group" fgid="6548">
+                                    <label for="exampleInputPassword1" class="form-label mt-3" fgid="6554">Password</label>
+                                    <input type="password" 
+                                    class="form-control" 
+                                    id="password" 
+                                    name="password" 
+                                    placeholder="Enter Password" 
+                                    formControlName="password"
+                                    autocomplete="off" 
+                                    fgid="6562">
+                                    <div *ngIf="!password?.valid && password?.dirty " class="text-danger text-sm mt-2">
+                                        <div *ngIf="password.errors?.maxlength">Password cannot be more than 16 characters
+                                        </div>
+                                        <div *ngIf="password.errors?.minlength">Password should be miniumum of 8 characters
+                                        </div>
+                                        <div *ngIf="password.errors?.required">Password is required</div>
+                                    </div>
+                                </div>
+    
+     
+    
+                                <button class="btn btn-primary mt-3" type="submit" [disabled]="!loginForm.valid" >Login</button>
+                            </form>
+                        </div>
+    
+     
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

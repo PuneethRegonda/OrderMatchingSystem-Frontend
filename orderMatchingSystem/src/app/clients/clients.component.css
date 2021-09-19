@@ -1,0 +1,12 @@
+.card{
+    border: 1px solid #e5e5e5;
+    border: none;
+}
+
+ 
+
+.bgcolor{
+    background-color:whitesmoke;
+    /* background:linear-gradient(150deg, #a3cde2, #cec4d8, #caced3 135%); */
+    border-radius: 12px;
+} 
