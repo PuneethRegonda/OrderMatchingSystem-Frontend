@@ -34,11 +34,11 @@ export class LoginService {
     return this.storageSub.asObservable();
   }
   setItem(key: string, data: any) {
-    localStorage.setItem(key, data);
+    sessionStorage.setItem(key, data);
     this.storageSub.next('changed');
   }
   removeItem(key: any) {
-    localStorage.removeItem(key);
+    sessionStorage.removeItem(key);
     this.storageSub.next('changed');
   }
    
