@@ -13,12 +13,11 @@
 
 
 <a class="card1 shadow2"
- [routerLink]="['/portfolio']"
-[queryParams]="{'clientid': clientDetails.clientid}">
+>
     <h3>{{clientDetails.clientname}}</h3>
-    <p class="small mt-4">Transaction limit of the client is 
+    <p class="small mt-4">Transaction limit of the client is
         <b>
-        {{clientDetails.transactionlimit}}</b>
+            {{clientDetails.transactionlimit}}</b>
     </p>
     <div class="go-corner">
         <div class="go-arrow">
@@ -26,4 +25,15 @@
 
         </div>
     </div>
+    <button class="btn btn-primary btn-sm float-left"
+    [routerLink]="['/portfolio']" 
+    [queryParams]="{'clientid': clientDetails.clientid}"
+     id="left" style="color:white">
+        Protfolio
+    </button>
+    &nbsp;&nbsp;
+    <button class="btn btn-success btn-sm float-right"
+    [routerLink]="['/orderplacing']" 
+    [queryParams]="{'clientid': clientDetails.clientid}" id="right"
+        style="color:white">OrderCreation</button>
 </a>

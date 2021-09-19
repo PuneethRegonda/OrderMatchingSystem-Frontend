@@ -1,0 +1,95 @@
+<div class="row justify-content-evenly">
+    <div class="col-lg-12 px-lg-5 mt-5 mb-4 ">
+        <div class="card col-lg-10 offset-md-1" style="border-radius: 40px;">
+            <div class="card-body  p-lg-5">
+                <p class="fs-2 fw-bolder text-center">ORDER PLACING</p>
+                <form [formGroup]="order">
+                    <fieldset>
+                        <div class="row justify-content-between">
+                            <div class="form-group col-lg-6">
+                                <label for="clientid" class="form-label mt-2">Client Id:</label><br>
+                                <input type="text" class="form-control" autocomplete="off" formControlName="clientid"
+                                    id="clientid" aria-describedby="clientIdHelp" placeholder="Enter client Id"
+                                    [value]="clientDetails?.clientid" readonly>
+                            </div><br>
+                            <div class="form-group col-lg-6">
+                                <label for="client_name" class="form-label mt-2">Client Name:</label><br>
+                                <input type="text" class="form-control" autocomplete="off" id="client_name"
+                                    formControlName="clientname" aria-describedby="clientNameHelp"
+                                    placeholder="Enter client Name" [value]="clientDetails?.clientname" readonly>
+                            </div><br>
+
+                            <div class="form-group col-lg-6">
+                                <label for="instrumentname" class="form-label mt-2">Instrument Name:</label><br>
+                                <select class="form-select" id="instrumentname" formControlName="instrumentname"
+                                    (change)="handleDropdownchange($event)" readonly>
+                                    <option>Choose Instrument Name</option>
+                                    <option *ngFor="let x of allInstruments" [value]="x.instrumentname">
+                                        {{x.instrumentname}}
+                                    </option>
+                                </select>
+                            </div><br>
+                            <!-- <div class="form-group col-lg-6">
+                                <label for="instrumentname" class="form-label mt-2">Instrument Name:</label><br>
+                                <input type="text" class="form-control" id="instrumentname"
+                                    placeholder="{{orderplacing.data.lastTrade.tradehistory.instrumentid.instrumentname}}"
+                                    readonly>
+                            </div><br> -->
+                            <div class="form-group col-lg-6">
+                                <label for="face" class="form-label mt-2">Face Value:</label><br>
+                                <input type="number" formControlName="facevalue" class="form-control" id="face"
+                                    placeholder="" [value]="selectedInstrument?.facevalue" readonly>
+                            </div><br>
+                            <div class="form-group col-lg-6">
+                                <label for="expirydate" class="form-label mt-2">Expiry Date:</label><br>
+                                <input type="date" class="form-control" formControlName="expiry" id="expirydate"
+                                    placeholder="Enter Expiry Date" [value]="selectedInstrument?.expiry" readonly>
+                            </div><br>
+                            <div class="form-group col-lg-6">
+                                <label for="price" class="form-label mt-2">Price:</label><br>
+                                <input type="number" class="form-control" formControlName="price" id="price"
+                                    placeholder="Enter Price">
+                            </div><br>
+                            <div *ngIf="!order.controls['price']?.valid && order.controls['price']?.dirty"
+                                class="text-danger  text-sm mt-2">
+                                <div *ngIf="order.controls['price'].errors?.required">
+                                    Price is required
+                                </div>
+                                <div *ngIf="order.controls['price'].errors?.pattern">
+                                    Only Numbers are allowed
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="quantity" class="form-label mt-2">Quantity:</label><br>
+                                <input type="number" class="form-control" min='25' formControlName="quantity"
+                                    autocomplete="off" id="quantity" placeholder="Enter Quantity" step="25">
+
+                                <div *ngIf="!order.controls['quantity']?.valid && order.controls['quantity']?.dirty"
+                                    class="text-danger  text-sm mt-2">
+                                    <div *ngIf="order.controls['quantity'].errors?.required">
+                                        Quantity is required
+                                    </div>
+                                    <div *ngIf="order.controls['quantity'].errors?.pattern">
+                                        Only Numbers are allowed
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label for="direction" class="form-label mt-2">Direction:</label><br>
+                                <select class="form-select" formControlName="direction" id="direction">
+                                    <option value="">Select Direction</option>
+                                    <option *ngFor="let d of direction" [value]="d">{{d}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-3 ">
+                            <button type="button" (click)="handleSubmit()" class="btn btn-primary">Submit</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
