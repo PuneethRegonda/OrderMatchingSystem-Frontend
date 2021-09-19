@@ -17,5 +17,9 @@ export class ClientService {
 
   }
 
+  getClientDetails(clientid: string) {
+    return this.http.get<Result>(`${url}/client/${clientid}`,{headers: headers});
+  }
+
  
 }

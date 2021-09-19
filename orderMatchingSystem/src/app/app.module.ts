@@ -14,6 +14,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ErrorPageComponentComponent } from './error-page-component/error-page-component.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule } from '@angular/common/http';
+import { DashboardCardComponent } from './dashboard/dashboard-card/dashboard-card.component';
+import { TradehistoryComponent } from './tradehistory/tradehistory.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {HttpClientModule } from '@angular/common/http';
     ClientCardComponent,
     OrderplacingComponent,
     PortfolioComponent,
-    ErrorPageComponentComponent
+    ErrorPageComponentComponent,
+    DashboardCardComponent,
+    TradehistoryComponent
   ],
   imports: [
     BrowserModule,

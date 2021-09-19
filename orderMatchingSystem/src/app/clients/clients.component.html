@@ -1,10 +1,6 @@
-<div class="row">
-    <app-client-card class="col-md-3 mt-3 mb-5" 
-    *ngFor="let card of cardDetails" 
-    [clientDetails]="card" >
-    </app-client-card>
+<div class="jumbotron jumbotron-fluid">
+    <div class="row jumbotron-fluid">
+        <app-client-card class="col-md-3 mt-3 mb-5" *ngFor="let card of cardDetails" [clientDetails]="card">
+        </app-client-card>
+    </div>
 </div>
-
-    
-
-

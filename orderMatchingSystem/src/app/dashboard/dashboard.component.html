@@ -1,1 +1,76 @@
-<p>dashboard works!</p>
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="col-sm-12 col-xl-12 mt-4">
+                    <div class="card">
+                        <div class="card-heading p-4">
+                            <h5 class="mb-4"> Welcome Back !! {{custodianDetails?.custodianname}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <h5 class="mb-4 mt-4"> Analytics </h5>
+                <div class="row mt-4">
+                    <app-dashboard-card class="col-sm-6 col-xl-3" *ngFor="let item of data" [cardcounts]="item">
+                    </app-dashboard-card>
+                </div>
+                <h5 class="mb-4 mt-4"> Last Trade</h5>
+                <div class="col-sm-12 col-xl-6 mt-4">
+                    <div class="card" style="border-radius: 4%;">
+                        <div class="card-body p-2">
+                            <div class="table-responsive ">
+                                <table class="table table-sm table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                {{lastTrade?.tradehistory?.senderclientid?.clientname}}
+                                            </th>
+                                            <th scope="col">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                                </svg>
+                                            </th>
+                                            <th scope="col">
+                                                {{lastTrade?.tradehistory?.receiverclientid?.clientname}}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="col col-sm-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                                                            <path
+                                                                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                                                        </svg>
+                                                    </div>
+                                                    <p>Time</p>
+                                                </div>
+                                            </td>
+                                            <td>{{lastTrade?.createdat | date: 'MMM d, y, h:mm:ss a' }}</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td colspan="2">Price</td>
+                                            <td>{{lastTrade?.tradehistory?.price}}</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td colspan="2">Quantity</td>
+                                            <td>{{lastTrade?.tradehistory?.quantity}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<app-tradehistory></app-tradehistory>

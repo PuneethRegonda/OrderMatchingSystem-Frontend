@@ -1,0 +1,35 @@
+<div class="card mt-4" style="border-radius: 3%;">
+    <div class="card-body ">
+        <div class="table-responsive ">
+            <table class="table">
+                <thead class="text-danger">
+                    <th>S.No</th>
+                    <th>Sender Client ID</th>
+                    <th>Sender Client Name</th>
+                    <th>Receiver Client ID</th>
+                    <th>Receiver Client Name</th>
+                    <th>Receiver CustodianName</th>
+                    <th>Instrument Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Created At</th>
+                </thead>
+                <br><br>
+                <tbody>
+                    <tr *ngFor="let x of tradeDetails; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{x.senderclientid?.clientid}}</td>
+                        <td>{{x.senderclientid?.clientname}}</td>
+                        <td>{{x.receiverclientid?.clientid}}</td>
+                        <td>{{x.receiverclientid?.clientname}}</td>
+                        <td>{{x.receivercustodianid.custodianname}}</td>
+                        <td>{{x.instrumentid.instrumentname}}</td>
+                        <td>{{x.price}}</td>
+                        <td>{{x.quantity}}</td>
+                        <td>{{x.createdat|  date: 'MMM d, y, h:mm:ss a'}}</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
