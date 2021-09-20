@@ -35,11 +35,11 @@ export class LoginService {
   }
   setItem(key: string, data: any) {
     localStorage.setItem(key, data);
-    this.storageSub.next('changed');
+    this.storageSub.next('set');
   }
   removeItem(key: any) {
     localStorage.removeItem(key);
-    this.storageSub.next('changed');
+    this.storageSub.next('remove');
   }
 
 }

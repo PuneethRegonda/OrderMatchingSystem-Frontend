@@ -48,15 +48,27 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (this.loginservice.isauthenticate())
-      this.auth = true;
-    else
-      this.auth = false
+    // if (this.loginservice.isauthenticate())
+    //   this.auth = true;
+    // else
+    //   this.auth = false
+
+    if(localStorage.getItem('token')){
+      this.auth=true;
+
+    }
 
     this.loginservice.watchStorage().subscribe((data: string) => {
 
-      if (data == 'changed') {
-        this.auth = false;
+      if (data == 'set') {
+        this.auth = true;
+      }
+      else if(data=='remove'){
+        this.auth=false
+      }
+      else if(localStorage.getItem('token')){
+        this.auth=true;
+
       }
 
     })
