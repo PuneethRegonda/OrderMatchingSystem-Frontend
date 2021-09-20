@@ -224,9 +224,9 @@ export class OrdercComponent implements OnInit {
              title: 'Order Placed successfully'
            })
 
-           this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.router.navigate(['/orderplacing']);
-          });
+          //  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          //   this.router.navigate(['/orderplacing']);
+          // });
 
       },(error)=>{
 
@@ -250,9 +250,9 @@ export class OrdercComponent implements OnInit {
           title: 'Order placed successfully'
         })
 
-        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-          this.router.navigate(['/orderplacing']);
-        });
+        // this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        //   this.router.navigate(['/orderplacing']);
+        // });
         
 
       },(error)=>{

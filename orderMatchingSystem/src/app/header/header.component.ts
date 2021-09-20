@@ -44,17 +44,12 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  
+
 
   ngOnInit(): void {
 
-    // if (this.loginservice.isauthenticate())
-    //   this.auth = true;
-    // else
-    //   this.auth = false
-
-    if(localStorage.getItem('token')){
-      this.auth=true;
+    if (localStorage.getItem('token')) {
+      this.auth = true;
 
     }
 
@@ -63,11 +58,11 @@ export class HeaderComponent implements OnInit {
       if (data == 'set') {
         this.auth = true;
       }
-      else if(data=='remove'){
-        this.auth=false
+      else if (data == 'remove') {
+        this.auth = false
       }
-      else if(localStorage.getItem('token')){
-        this.auth=true;
+      else if (localStorage.getItem('token')) {
+        this.auth = true;
 
       }
 
@@ -75,8 +70,8 @@ export class HeaderComponent implements OnInit {
 
   }
 
-   onlogout(){
-     this.loginservice.removeItem('token')
-   }
+  onlogout() {
+    this.loginservice.removeItem('token')
+  }
 
 }

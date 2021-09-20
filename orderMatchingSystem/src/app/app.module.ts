@@ -13,7 +13,7 @@ import { ClientCardComponent } from './clients/client-card/client-card.component
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ErrorPageComponentComponent } from './error-page-component/error-page-component.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import {HttpClientModule,HttpClientXsrfModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardCardComponent } from './dashboard/dashboard-card/dashboard-card.component';
 import { TradehistoryComponent } from './tradehistory/tradehistory.component';
 import { OrdercComponent } from './orderc/orderc.component';
@@ -45,7 +45,11 @@ import { TokeninterceptorService } from './services/tokeninterceptor.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ChartModule
+    ChartModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-CSRF-TOKEN'
+    }),
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
