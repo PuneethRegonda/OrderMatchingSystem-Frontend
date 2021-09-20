@@ -24,11 +24,18 @@ export class PortfolioComponent implements OnInit {
   buyDetails?: [Buy]
   sellDetails?: [Sell]
   clientDetails?: Client
+  direction: Array<any>
+  barchart: boolean = false;
+  barchartdata: Array<any>=[]
 
   constructor(private router: Router,
     private route: ActivatedRoute,
     private custodianservice: CustodianService,
-    private portfolioservice: PortfolioService) { }
+    private portfolioservice: PortfolioService) {
+
+      this.direction = ['Buy', 'Sell'];
+
+    }
 
   ngOnInit(): void {
 
@@ -91,6 +98,9 @@ export class PortfolioComponent implements OnInit {
        this.buyDetails = result.data.buy as [Buy]
        this.sellDetails = result.data.sell as [Sell]
 
+       this.barchartdata.push(this.buyDetails.length)
+       this.barchartdata.push(this.sellDetails.length)
+
        console.log(this.clientDetails,this.buyDetails, this.sellDetails)
 
      },(error)=>{
@@ -123,6 +133,10 @@ export class PortfolioComponent implements OnInit {
 
 
     })
+  }
+
+  barChart() {
+    this.barchart = !this.barchart
   }
 
 

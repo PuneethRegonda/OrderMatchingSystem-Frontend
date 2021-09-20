@@ -18,6 +18,7 @@ import { DashboardCardComponent } from './dashboard/dashboard-card/dashboard-car
 import { TradehistoryComponent } from './tradehistory/tradehistory.component';
 import { OrdercComponent } from './orderc/orderc.component';
 import { ChartComponent } from './chart/chart.component';
+import { CommonchartComponent } from './portfolio/commonchart/commonchart.component';
 
 @NgModule({
   
@@ -34,7 +35,8 @@ import { ChartComponent } from './chart/chart.component';
     DashboardCardComponent,
     TradehistoryComponent,
     OrdercComponent,
-    ChartComponent
+    ChartComponent,
+    CommonchartComponent
   ],
   imports: [
     BrowserModule,

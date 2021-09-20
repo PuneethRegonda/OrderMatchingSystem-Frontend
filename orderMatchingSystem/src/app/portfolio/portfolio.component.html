@@ -81,6 +81,22 @@
                         </div>
                     </div>
                 </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" (click)="barChart()">Bar Chart</button>
+                        <br><br>
+                        <app-commonchart
+                        *ngIf="barchart"
+                        [type]="'bar'"
+                        [labels]="direction"
+                        [chartdata]="barchartdata"
+                        [title]="'Buy & Sell Count'"
+                        >
+                       
+                        </app-commonchart>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
