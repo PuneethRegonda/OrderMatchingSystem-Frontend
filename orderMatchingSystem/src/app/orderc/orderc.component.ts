@@ -198,8 +198,8 @@ export class OrdercComponent implements OnInit {
       instrumentid: this.selectedInstrument,
       price: this.order.controls['price'].value,
       quantity: this.order.controls['quantity'].value,
-      createdate: new Date()
-
+      createdate: new Date(),
+      isactive: true
     }
 
     if(this.order.controls['direction'].value==='Buy'){

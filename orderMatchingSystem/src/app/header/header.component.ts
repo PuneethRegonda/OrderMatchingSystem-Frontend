@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (sessionStorage.getItem('token'))
+    if (localStorage.getItem('token'))
       this.auth = true;
     else
       this.auth = false

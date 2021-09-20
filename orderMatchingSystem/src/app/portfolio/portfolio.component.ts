@@ -27,6 +27,7 @@ export class PortfolioComponent implements OnInit {
   clientDetails?: Client
   direction: Array<any>
   barchart: boolean = false;
+  piechart: boolean = false
   barchartdata: Array<any>=[]
   clientInstruments: any
 
@@ -143,7 +144,17 @@ export class PortfolioComponent implements OnInit {
   }
 
   barChart() {
+    this.piechart =false
     this.barchart = !this.barchart
+   
+    
+  }
+  pieChart() {
+
+    this.barchart=false;
+    this.piechart = !this.piechart
+
+
   }
 
 

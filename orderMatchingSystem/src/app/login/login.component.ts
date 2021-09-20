@@ -65,12 +65,17 @@ export class LoginComponent implements OnInit {
 
     this.loginservice.checkAuth(this.Authdata).subscribe((result: Result)=>{
 
-      // sessionStorage.setItem('token',result.data.toString() )
+      // localStorage.setItem('token',result.data.toString() )
       this.loginservice.setItem('token',result.data.toString())
+      localStorage.setItem('token',result.data.toString() )
+      // this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      //   this.router.navigate(['/login']);
+      // });
 
       this.router.navigate(['dashboard'])
 
     },(error)=>{
+      console.log("erer")
 
         if(error.status==403){
           Swal.fire({

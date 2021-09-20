@@ -123,6 +123,20 @@
                        
                         </app-commonchart>
                     </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" (click)="pieChart()">Pie Chart</button>
+                        <br><br>
+                        <app-commonchart
+                        *ngIf="piechart"
+                        [type]="'pie'"
+                        [labels]="direction"
+                        [chartdata]="barchartdata"
+                        [title]="'Buy & Sell Count'"
+                        >
+                       
+                        </app-commonchart>
+
+                    </div>
                 </div>
             </div>
         </div>
