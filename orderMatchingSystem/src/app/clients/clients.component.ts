@@ -39,6 +39,14 @@ export class ClientsComponent implements OnInit {
              })
              this.router.navigate(['/login'])
          }
+         else{
+           Swal.fire({
+             icon: 'error',
+             text: error.error.message
+           })
+         }
+
+
 
 
     })
@@ -62,7 +70,14 @@ export class ClientsComponent implements OnInit {
           text: 'Invalid Username or Password'
         })
         this.router.navigate(['/login'])
-    }
+      }
+      else{
+        Swal.fire({
+          icon: 'error',
+          text: error.error.message
+        })
+      }
+
 
     })
 

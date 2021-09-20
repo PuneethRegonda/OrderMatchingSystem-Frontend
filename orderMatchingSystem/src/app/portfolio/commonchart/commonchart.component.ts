@@ -25,7 +25,7 @@ export class CommonchartComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.type = 'bar';
+    this.type = this.type;
     this.data = {
       labels: this.labels,
       datasets: [

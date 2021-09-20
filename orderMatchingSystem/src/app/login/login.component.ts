@@ -68,9 +68,7 @@ export class LoginComponent implements OnInit {
       // localStorage.setItem('token',result.data.toString() )
       this.loginservice.setItem('token',result.data.toString())
       localStorage.setItem('token',result.data.toString() )
-      // this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      //   this.router.navigate(['/login']);
-      // });
+     
 
       this.router.navigate(['dashboard'])
 
@@ -82,6 +80,12 @@ export class LoginComponent implements OnInit {
             icon: 'error',
             title: 'Oops...',
             text: 'Invalid UserName or Password'
+          })
+        }
+        else{
+          Swal.fire({
+            icon: 'error',
+            text: error.error.message
           })
         }
     

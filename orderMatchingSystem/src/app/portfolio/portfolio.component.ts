@@ -28,8 +28,14 @@ export class PortfolioComponent implements OnInit {
   direction: Array<any>
   barchart: boolean = false;
   piechart: boolean = false
+  linechart: boolean = false
   barchartdata: Array<any>=[]
   clientInstruments: any
+  pielabels: any = [
+    'Red',
+    // 'Yellow',
+    'Blue'
+]
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -88,6 +94,12 @@ export class PortfolioComponent implements OnInit {
         })
         this.router.navigate(['/login'])
       }
+      else{
+        Swal.fire({
+          icon: 'error',
+          text: error.error.message
+        })
+      }
 
 
     })
@@ -120,6 +132,12 @@ export class PortfolioComponent implements OnInit {
           text: 'Invalid Username or Password'
         })
         this.router.navigate(['/login'])
+      }
+      else{
+        Swal.fire({
+          icon: 'error',
+          text: error.error.message
+        })
       }
 
      })
@@ -154,6 +172,14 @@ export class PortfolioComponent implements OnInit {
     this.barchart=false;
     this.piechart = !this.piechart
 
+
+  }
+
+  lineChart(){
+
+    this.barchart=false;
+    this.piechart = false;
+    this.linechart = !this.linechart
 
   }
 

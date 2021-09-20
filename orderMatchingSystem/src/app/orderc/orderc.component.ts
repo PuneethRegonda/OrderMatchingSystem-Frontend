@@ -103,6 +103,13 @@ export class OrdercComponent implements OnInit {
         })
         this.router.navigate(['/login'])
       }
+      else{
+        Swal.fire({
+          icon: 'error',
+          text: error.error.message
+        })
+      }
+
 
     })
 
@@ -123,6 +130,12 @@ export class OrdercComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           text: 'Invalid Username or password'
+        })
+      }
+      else{
+        Swal.fire({
+          icon: 'error',
+          text: error.error.message
         })
       }
 
