@@ -10,6 +10,7 @@ import { CustodianService } from '../services/custodian.service';
 import { PortfolioService } from '../services/portfolio.service';
 import  {jsPDF} from 'jspdf';
 import html2canvas from 'html2canvas';
+import { Instrument } from '../models/Instrument';
 
 @Component({
   selector: 'app-portfolio',
@@ -27,11 +28,14 @@ export class PortfolioComponent implements OnInit {
   direction: Array<any>
   barchart: boolean = false;
   barchartdata: Array<any>=[]
+  clientInstruments: any
 
   constructor(private router: Router,
     private route: ActivatedRoute,
     private custodianservice: CustodianService,
     private portfolioservice: PortfolioService) {
+
+      this.clientInstruments=[]
 
       this.direction = ['Buy', 'Sell'];
 
@@ -97,6 +101,9 @@ export class PortfolioComponent implements OnInit {
        this.clientDetails = result.data.client as Client
        this.buyDetails = result.data.buy as [Buy]
        this.sellDetails = result.data.sell as [Sell]
+       this.clientInstruments = result.data.clientInstruments as [Instrument]
+      //  console.log(this.clientDetails,this.buyDetails, this.sellDetails,this.clientInstruments)
+      //  console.log(this.clientInstruments);
 
        this.barchartdata.push(this.buyDetails.length)
        this.barchartdata.push(this.sellDetails.length)
