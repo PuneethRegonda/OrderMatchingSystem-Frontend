@@ -242,7 +242,6 @@ export class OrdercComponent implements OnInit {
     }
     else{
 
-      alert("sell");
       this.sellService.sellOrder(data).subscribe((d)=>{
 
         Swal.fire({
