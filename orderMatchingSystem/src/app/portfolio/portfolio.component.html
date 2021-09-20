@@ -34,9 +34,37 @@
                     <button type="button" (click)="saveaspdf()" class="col-md-1 btn btn-secondary m-2 p-1">Generate
                         report</button>
                 </div>
+ 
+                <div id="clientInstruments">
+                    <h4>Client Instruments</h4><br>
+                    <div class="card col-md-12 mt-2 mb-4" style="border-radius: 10px;" >
+                        <div class="table-responsive">
+                            <table class="table table-hover " fgid="6030" style="margin-right: 500px; ">
+                                <thead fgid="6036">
+                                    <tr fgid="6042">
+                                        <th scope="col" fgid="6048">Instrument Id</th>
+                                        <th scope="col" fgid="6055">Instrument Name</th>
+                                        <th scope="col" fgid="6062">Face Value</th>
+                                        <th scope="col" fgid="6069">Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody fgid="6076">
+                                    <tr *ngFor="let i of clientInstruments">
+                                        <td fgid="6095">{{i.instrumentid.instrumentid}}</td>
+                                        <td fgid="6102">{{i.instrumentid.instrumentname}}</td>
+                                        <td fgid="6109">{{i.instrumentid.facevalue}}</td>
+                                        <td fgid="6109">{{i.quantity}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+ 
+
                 <div id="buyselllist">
                     <h4>Total Buy Sell Instruments of Client</h4><br>
-                    <div class="card col-md-12" style="border-radius: 10px;" >
+                    <div class="card col-md-12 mb-4" style="border-radius: 10px;" >
                         <div class="table-responsive">
                             <table class="table table-hover " fgid="6030" style="margin-right: 500px; ">
                                 <thead fgid="6036">
@@ -60,7 +88,6 @@
                                         <td fgid="6109">
                                             <p *ngIf="i.isactive">Partial Trade</p>
                                             <p *ngIf="!i.isactive">Trade Success</p>
-
                                         </td>
                                         <td fgid="6109">{{i.instrumentid.expiry}}</td>
                                     </tr>
