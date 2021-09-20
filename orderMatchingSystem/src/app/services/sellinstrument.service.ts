@@ -11,7 +11,7 @@ export class SellinstrumentService {
 
   sellOrder(data: any) {
 
-    return this.http.post(`${url}/buyinstruments`,data,{headers: headers})
+    return this.http.post(`${url}/sellinstruments`,data,{headers: headers})
 
   }
 }

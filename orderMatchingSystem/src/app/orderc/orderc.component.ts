@@ -171,7 +171,7 @@ export class OrdercComponent implements OnInit {
     let quantity  = this.order.controls['quantity'].value
     console.log(this.selectedInstrument)
 
-    if((quantity/this.selectedInstrument?.minquanity!)!=0){
+    if((quantity%this.selectedInstrument?.minquanity!)!=0){
 
       Swal.fire({
         icon: 'error',
@@ -202,7 +202,7 @@ export class OrdercComponent implements OnInit {
 
     }
 
-    if(this.order.controls['direction'].value=='Buy'){
+    if(this.order.controls['direction'].value==='Buy'){
 
       this.buyservice.buyOrder(data).subscribe((d)=>{
 
@@ -229,6 +229,7 @@ export class OrdercComponent implements OnInit {
     }
     else{
 
+      alert("sell");
       this.sellService.sellOrder(data).subscribe((d)=>{
 
         Swal.fire({

@@ -20,6 +20,7 @@ import { OrdercComponent } from './orderc/orderc.component';
 import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
+  
   declarations: [
     AppComponent,
     HeaderComponent,
