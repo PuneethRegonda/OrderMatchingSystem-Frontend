@@ -34,10 +34,10 @@
                     <button type="button" (click)="saveaspdf()" class="col-md-1 btn btn-secondary m-2 p-1">Generate
                         report</button>
                 </div>
- 
+
                 <div id="clientInstruments">
                     <h4>Client Instruments</h4><br>
-                    <div class="card col-md-12 mt-2 mb-4" style="border-radius: 10px;" >
+                    <div class="card col-md-12 mt-2 mb-4" style="border-radius: 10px;">
                         <div class="table-responsive">
                             <table class="table table-hover " fgid="6030" style="margin-right: 500px; ">
                                 <thead fgid="6036">
@@ -60,11 +60,11 @@
                         </div>
                     </div>
                 </div>
- 
+
 
                 <div id="buyselllist">
                     <h4>Total Buy Sell Instruments of Client</h4><br>
-                    <div class="card col-md-12 mb-4" style="border-radius: 10px;" >
+                    <div class="card col-md-12 mb-4" style="border-radius: 10px;">
                         <div class="table-responsive">
                             <table class="table table-hover " fgid="6030" style="margin-right: 500px; ">
                                 <thead fgid="6036">
@@ -83,7 +83,7 @@
                                         <td fgid="6095">{{i.instrumentid.instrumentid}}</td>
                                         <td>Sell Instrument</td>
                                         <td fgid="6102">{{i.instrumentid.instrumentname}}</td>
-                                        <td fgid="6109">{{i.instrumentid.facevalue}}</td>
+                                        <td fgid="6109">{{i.price}}</td>
                                         <td fgid="6109">{{i.instrumentid. minquanity}}</td>
                                         <td fgid="6109">
                                             <p *ngIf="i.isactive">Partial Trade</p>
@@ -95,7 +95,7 @@
                                         <td fgid="6095">{{i.instrumentid.instrumentid}}</td>
                                         <td>Buy Instrument</td>
                                         <td fgid="6102">{{i.instrumentid.instrumentname}}</td>
-                                        <td fgid="6109">{{i.instrumentid.facevalue}}</td>
+                                        <td fgid="6109">{{i.price}}</td>
                                         <td fgid="6109">{{i.instrumentid. minquanity}}</td>
                                         <td fgid="6109">
                                             <p *ngIf="i.isactive">Partial Trade</p>
@@ -106,6 +106,34 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" (click)="barChart()">Bar Chart</button>
+                        <br><br>
+                        <app-commonchart *ngIf="barchart" [type]="'bar'" [labels]="direction" [chartdata]="barchartdata"
+                            [title]="'Buy & Sell Count'">
+                        </app-commonchart>
+                        <app-commonchart *ngIf="piechart" [type]="'pie'" [labels]="direction" [chartdata]="barchartdata"
+                            [title]="'Buy & Sell Count'">
+                        </app-commonchart>
+                        <app-commonchart *ngIf="linechart" [type]="'line'" [labels]="direction" [chartdata]="barchartdata"
+                        [title]="'Buy & Sell Count'">
+                    </app-commonchart>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" (click)="pieChart()">Pie Chart</button>
+                        <br><br>
+
+
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" (click)="lineChart()">Line Chart</button>
+                        <br><br>
+
+
                     </div>
                 </div>
             </div>

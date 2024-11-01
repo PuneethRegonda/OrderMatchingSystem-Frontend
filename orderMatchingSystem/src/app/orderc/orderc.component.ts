@@ -103,6 +103,13 @@ export class OrdercComponent implements OnInit {
         })
         this.router.navigate(['/login'])
       }
+      else{
+        Swal.fire({
+          icon: 'error',
+          text: error.error.message
+        })
+      }
+
 
     })
 
@@ -123,6 +130,12 @@ export class OrdercComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           text: 'Invalid Username or password'
+        })
+      }
+      else{
+        Swal.fire({
+          icon: 'error',
+          text: error.error.message
         })
       }
 
@@ -198,8 +211,8 @@ export class OrdercComponent implements OnInit {
       instrumentid: this.selectedInstrument,
       price: this.order.controls['price'].value,
       quantity: this.order.controls['quantity'].value,
-      createdate: new Date()
-
+      createdate: new Date(),
+      isactive: true
     }
 
     if(this.order.controls['direction'].value==='Buy'){
@@ -211,9 +224,9 @@ export class OrdercComponent implements OnInit {
              title: 'Order Placed successfully'
            })
 
-           this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.router.navigate(['/orderplacing']);
-          });
+          //  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          //   this.router.navigate(['/orderplacing']);
+          // });
 
       },(error)=>{
 
@@ -229,7 +242,6 @@ export class OrdercComponent implements OnInit {
     }
     else{
 
-      alert("sell");
       this.sellService.sellOrder(data).subscribe((d)=>{
 
         Swal.fire({
@@ -237,9 +249,9 @@ export class OrdercComponent implements OnInit {
           title: 'Order placed successfully'
         })
 
-        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-          this.router.navigate(['/orderplacing']);
-        });
+        // this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        //   this.router.navigate(['/orderplacing']);
+        // });
         
 
       },(error)=>{

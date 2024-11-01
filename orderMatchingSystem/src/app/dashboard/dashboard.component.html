@@ -53,6 +53,15 @@
                                             <td>{{lastTrade?.createdat | date: 'MMM d, y, h:mm:ss a' }}</td>
                                         </tr>
                                         <tr>
+                                            <td colspan="2">
+                                                <div class="col ">
+                                                    
+                                                    <p>Instrument Name</p>
+                                                </div>
+                                            </td>
+                                            <td>{{lastTrade?.tradehistory?.instrumentid?.instrumentname}}</td>
+                                        </tr>
+                                        <tr>
 
                                             <td colspan="2">Price</td>
                                             <td>{{lastTrade?.tradehistory?.price}}</td>

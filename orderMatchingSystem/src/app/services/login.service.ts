@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { AuthenticationRequest } from '../models/AuthenticationRequest';
 import { Result } from '../models/Result';
-import {url} from '../utils/constants'
+import { url } from '../utils/constants'
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +15,16 @@ export class LoginService {
   }
 
 
-  checkAuth(data: AuthenticationRequest){
+  checkAuth(data: AuthenticationRequest) {
 
 
-     return this.http.post<Result>(url+'/authenticate',data);
+    return this.http.post<Result>(url + '/authenticate', data);
 
   }
 
   isauthenticate() {
 
-    let user = sessionStorage.getItem('token')
+    let user = localStorage.getItem('token')
     return user!==null
 
   }
@@ -34,12 +34,12 @@ export class LoginService {
     return this.storageSub.asObservable();
   }
   setItem(key: string, data: any) {
-    sessionStorage.setItem(key, data);
-    this.storageSub.next('changed');
+    localStorage.setItem(key, data);
+    this.storageSub.next('set');
   }
   removeItem(key: any) {
-    sessionStorage.removeItem(key);
-    this.storageSub.next('changed');
+    localStorage.removeItem(key);
+    this.storageSub.next('remove');
   }
-   
+
 }

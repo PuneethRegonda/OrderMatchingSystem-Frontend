@@ -25,12 +25,28 @@ export class PortfolioComponent implements OnInit {
   buyDetails?: [Buy]
   sellDetails?: [Sell]
   clientDetails?: Client
-  clientInstruments?: any;
+  direction: Array<any>
+  barchart: boolean = false;
+  piechart: boolean = false
+  linechart: boolean = false
+  barchartdata: Array<any>=[]
+  clientInstruments: any
+  pielabels: any = [
+    'Red',
+    // 'Yellow',
+    'Blue'
+]
 
   constructor(private router: Router,
     private route: ActivatedRoute,
     private custodianservice: CustodianService,
-    private portfolioservice: PortfolioService) { }
+    private portfolioservice: PortfolioService) {
+
+      this.clientInstruments=[]
+
+      this.direction = ['Buy', 'Sell'];
+
+    }
 
   ngOnInit(): void {
 
@@ -78,6 +94,12 @@ export class PortfolioComponent implements OnInit {
         })
         this.router.navigate(['/login'])
       }
+      else{
+        Swal.fire({
+          icon: 'error',
+          text: error.error.message
+        })
+      }
 
 
     })
@@ -93,8 +115,14 @@ export class PortfolioComponent implements OnInit {
        this.buyDetails = result.data.buy as [Buy]
        this.sellDetails = result.data.sell as [Sell]
        this.clientInstruments = result.data.clientInstruments as [Instrument]
-       console.log(this.clientDetails,this.buyDetails, this.sellDetails,this.clientInstruments)
-       console.log(this.clientInstruments);
+      //  console.log(this.clientDetails,this.buyDetails, this.sellDetails,this.clientInstruments)
+      //  console.log(this.clientInstruments);
+
+       this.barchartdata.push(this.buyDetails.length)
+       this.barchartdata.push(this.sellDetails.length)
+
+       console.log(this.clientDetails,this.buyDetails, this.sellDetails)
+
      },(error)=>{
 
       if (error.status = 403) {
@@ -104,6 +132,12 @@ export class PortfolioComponent implements OnInit {
           text: 'Invalid Username or Password'
         })
         this.router.navigate(['/login'])
+      }
+      else{
+        Swal.fire({
+          icon: 'error',
+          text: error.error.message
+        })
       }
 
      })
@@ -125,6 +159,28 @@ export class PortfolioComponent implements OnInit {
 
 
     })
+  }
+
+  barChart() {
+    this.piechart =false
+    this.barchart = !this.barchart
+   
+    
+  }
+  pieChart() {
+
+    this.barchart=false;
+    this.piechart = !this.piechart
+
+
+  }
+
+  lineChart(){
+
+    this.barchart=false;
+    this.piechart = false;
+    this.linechart = !this.linechart
+
   }
 
 
